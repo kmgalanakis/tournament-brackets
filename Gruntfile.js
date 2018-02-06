@@ -9,7 +9,7 @@ module.exports = function( grunt ) {
 
 		addtextdomain: {
 			options: {
-				textdomain: 'tennis-brackets',
+				textdomain: 'tournament-brackets',
 			},
 			update_all_domains: {
 				options: {
@@ -31,8 +31,8 @@ module.exports = function( grunt ) {
 			target: {
 				options: {
 					domainPath: '/languages',
-					mainFile: 'tennis-brackets.php',
-					potFilename: 'tennis-brackets.pot',
+					mainFile: 'tournament-brackets.php',
+					potFilename: 'tournament-brackets.pot',
 					potHeaders: {
 						poedit: true,
 						'x-poedit-keywordslist': true

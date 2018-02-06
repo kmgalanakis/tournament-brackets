@@ -2,9 +2,9 @@
 /**
  * Tennis Brackets plugin's main bootstrap file.
  *
- * @package  tennis-brackets
+ * @package  tournament-brackets
  * @author   Konstantinos Galanakis
  */
-require_once TENNIS_BRACKETS_PATH . '/inc/autoload.php';
-$tb_main = new \Tennis_Brackets\Controllers\Tennis_Brackets_Main();
+require_once TOURNAMENT_BRACKETS_PATH . '/inc/autoload.php';
+$tb_main = new \Tournament_Brackets\Controllers\Tournament_Brackets_Main();
 $tb_main->initialize();

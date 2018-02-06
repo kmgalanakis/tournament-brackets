@@ -1,0 +1,10 @@
+<div id="tournament-brackets-front-<?php echo $tournament_brackets_id ?>"></div>
+<script type="text/javascript">
+    jQuery( document ).ready( function( $ ) {
+        var tournamentBracketData<?php echo $tournament_brackets_id ?> = JSON.parse( '<?php echo $tournament_brackets_data; ?>' );
+
+        $( '#tournament-brackets-front-<?php echo $tournament_brackets_id ?>' ).bracket({
+            init: tournamentBracketData<?php echo $tournament_brackets_id ?>,
+        });
+    });
+</script>

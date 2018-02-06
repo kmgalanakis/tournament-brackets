@@ -1,4 +1,4 @@
-=== Tennis Brackets ===
+=== Tournament Brackets ===
 Contributors: (this should be a list of wordpress.org userid's)
 Donate link: http://example.com/
 Tags: comments, spam

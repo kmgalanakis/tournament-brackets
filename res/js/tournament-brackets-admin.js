@@ -1,22 +1,24 @@
-var tennisBracketsAdmin = function( $ ) {
+import './../css/tournament-brackets.scss';
+
+var tournamentBracketsAdmin = function( $ ) {
 
     var self = this;
 
     self.renderBracket = function() {
 
-        var tennisBracketDaata = $('#tennis_brackets_data').val();
-        if ( '' === tennisBracketDaata ) {
-            tennisBracketDaata = '""';
+        var tournamentBracketsData = $( '#tournament_brackets_data' ).val();
+        if ( '' === tournamentBracketsData ) {
+            tournamentBracketsData = '""';
         }
-        tennisBracketDaata = JSON.parse( tennisBracketDaata );
+        tournamentBracketsData = JSON.parse( tournamentBracketsData );
 
-        if ( tennisBracketDaata.length <= 0 ) {
-            tennisBracketDaata = {
-                "teams": [
+        if ( 0 >= tournamentBracketsData.length ) {
+            tournamentBracketsData = {
+                'teams': [
                     [ null, null ],
                     [ null, null ]
                 ],
-                "results": [
+                'results': [
                     [
                         [
                             [ null, null ],
@@ -28,11 +30,11 @@ var tennisBracketsAdmin = function( $ ) {
                         ]
                     ]
                 ]
-            }
+            };
         }
 
-        $( '#tennis-bracket' ).bracket({
-            init: tennisBracketDaata,
+        $( '#tournament-brackets' ).bracket({
+            init: tournamentBracketsData,
             save: self.saveFn
         });
 
@@ -46,7 +48,7 @@ var tennisBracketsAdmin = function( $ ) {
      */
     self.saveFn = function( data, userData ) {
         var json = JSON.stringify( data );
-        $('#tennis_brackets_data').val( json );
+        $( '#tournament_brackets_data' ).val( json );
     };
 
     self.init = function() {
@@ -58,5 +60,5 @@ var tennisBracketsAdmin = function( $ ) {
 };
 
 jQuery( document ).ready( function( $ ) {
-    var tennisBracketsAdminInstance = new tennisBracketsAdmin( $ );
+    var tournamentBracketsAdminInstance = new tournamentBracketsAdmin( $ );
 });

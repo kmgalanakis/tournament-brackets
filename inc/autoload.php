@@ -6,7 +6,7 @@
  * @package Mailgun_Dashboard\Inc
  */
 
-spl_autoload_register( 'tennis_brackets_autoload' );
+spl_autoload_register( 'tournament_brackets_autoload' );
 
 /**
  * Dynamically loads the class attempting to be instantiated elsewhere in the
@@ -20,10 +20,10 @@ spl_autoload_register( 'tennis_brackets_autoload' );
  *
  * @param string $class_name The fully-qualified name of the class to load.
  */
-function tennis_brackets_autoload( $class_name ) {
+function tournament_brackets_autoload( $class_name ) {
 
 	// If the specified $class_name does not include our namespace, duck out.
-	if ( false === strpos( $class_name, 'Tennis_Brackets' ) ) {
+	if ( false === strpos( $class_name, 'Tournament_Brackets' ) ) {
 		return;
 	}
 

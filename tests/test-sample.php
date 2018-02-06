@@ -2,7 +2,7 @@
 /**
  * Class SampleTest
  *
- * @package Tennis_Brackets
+ * @package Tournament_Brackets
  */
 
 /**
