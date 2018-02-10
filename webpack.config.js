@@ -7,6 +7,9 @@ const path = require( 'path' );
 const tournamentBracketsCSSPlugin = new ExtractTextPlugin({
     filename: './assets/css/tournament-brackets.css'
 });
+const tournamentBracketsAdminCSSPlugin = new ExtractTextPlugin({
+	filename: './assets/css/tournament-brackets-admin.css'
+});
 
 // Configuration for the ExtractTextPlugin.
 const extractConfig = {
@@ -59,13 +62,18 @@ module.exports = function( env ) {
                     },
                 },
                 {
-                    test: /tournament-brackets\.s?css$/,
-                    use: tournamentBracketsCSSPlugin.extract( extractConfig )
-                }
+                    test: /tournament-brackets-admin\.s?css$/,
+                    use: tournamentBracketsAdminCSSPlugin.extract( extractConfig )
+                },
+				{
+					test: /tournament-brackets\.s?css$/,
+					use: tournamentBracketsCSSPlugin.extract( extractConfig )
+				}
             ]
         },
         plugins: [
             tournamentBracketsCSSPlugin,
+			tournamentBracketsAdminCSSPlugin,
             new StyleLintPlugin({
                 syntax: 'scss'
             }),
@@ -81,8 +89,11 @@ module.exports = function( env ) {
             new CopyWebpackPlugin([
                 // JS
                 { from: './node_modules/jquery-bracket/dist/jquery.bracket.min.js', to: './assets/js/third-party' },
+				{ from: './node_modules/jquery-tennis-bracket/dist/jquery.bracket.min.js', to: './assets/js/third-party/jquery.tennis.bracket.min.js' },
                 // CSS
                 { from: './node_modules/jquery-bracket/dist/jquery.bracket.min.css', to: './assets/css/third-party' },
+				{ from: './node_modules/jquery-bracket/dist/jquery.bracket.min.css', to: './assets/css/third-party/jquery.tennis.bracket.min.css' },
+                //
             ])
         ]
     }

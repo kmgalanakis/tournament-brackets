@@ -5,6 +5,11 @@
 
         $( '#tournament-brackets-front-<?php echo $tournament_brackets_id ?>' ).bracket({
             init: tournamentBracketData<?php echo $tournament_brackets_id ?>,
+			teamWidth: 180,
+			skipConsolationRound: true,
+			centerConnectors: true,
         });
+		$( '#tournament-brackets-front-<?php echo $tournament_brackets_id ?>' ).doubleScroll();
+
     });
 </script>

@@ -1,4 +1,5 @@
 import './../css/tournament-brackets.scss';
+import './../css/tournament-brackets-admin.scss';
 
 var tournamentBracketsAdmin = function( $ ) {
 
@@ -21,12 +22,12 @@ var tournamentBracketsAdmin = function( $ ) {
                 'results': [
                     [
                         [
-                            [ null, null ],
-                            [ null, null ]
+                            [ [ null, null, null ], [ null, null, null ] ],
+                            [ [ null, null, null ], [ null, null, null ] ]
                         ],
                         [
-                            [ null, null ],
-                            [ null, null ]
+                            [ [ null, null, null ], [ null, null, null ] ],
+                            [ [ null, null, null ], [ null, null, null ] ]
                         ]
                     ]
                 ]
@@ -35,6 +36,9 @@ var tournamentBracketsAdmin = function( $ ) {
 
         $( '#tournament-brackets' ).bracket({
             init: tournamentBracketsData,
+			centerConnectors: true,
+			teamWidth: 180,
+			skipConsolationRound: true,
             save: self.saveFn
         });
 
@@ -61,4 +65,5 @@ var tournamentBracketsAdmin = function( $ ) {
 
 jQuery( document ).ready( function( $ ) {
     var tournamentBracketsAdminInstance = new tournamentBracketsAdmin( $ );
+    $( '#tournament-brackets' ).doubleScroll();
 });

@@ -178,7 +178,23 @@ class Tournament_Brackets_Main {
 	public function register_assets() {
 		wp_register_script(
 			'tournament_brackets_jquery_bracket',
-			TOURNAMENT_BRACKETS_URL . '/assets/js/third-party/jquery.bracket.min.js',
+			TOURNAMENT_BRACKETS_URL . 'assets/js/third-party/jquery.bracket.min.js',
+			array( 'jquery' ),
+			TOURNAMENT_BRACKETS_URL,
+			false
+		);
+
+		wp_register_script(
+			'tournament_brackets_jquery_tennis_bracket',
+			TOURNAMENT_BRACKETS_URL . 'assets/js/third-party/jquery.tennis.bracket.min.js',
+			array( 'jquery' ),
+			TOURNAMENT_BRACKETS_URL,
+			false
+		);
+
+		wp_register_script(
+			'tournament_brackets_jquery_doublescroll',
+			TOURNAMENT_BRACKETS_URL . 'assets/js/third-party/jquery.doubleScroll.js',
 			array( 'jquery' ),
 			TOURNAMENT_BRACKETS_URL,
 			false
@@ -186,41 +202,65 @@ class Tournament_Brackets_Main {
 
 		wp_register_style(
 			'tournament_brackets_jquery_bracket_style',
-			TOURNAMENT_BRACKETS_URL . '/assets/css/third-party/jquery.bracket.min.css',
+			TOURNAMENT_BRACKETS_URL . 'assets/css/third-party/jquery.bracket.min.css',
 			array(),
 			TOURNAMENT_BRACKETS_URL
 		);
 
 		wp_register_script(
 			'tournament_brackets_admin_script',
-			TOURNAMENT_BRACKETS_URL . '/assets/js/tournament-brackets-admin.js',
+			TOURNAMENT_BRACKETS_URL . 'assets/js/tournament-brackets-admin.js',
 			array( 'jquery' ),
 			TOURNAMENT_BRACKETS_URL,
 			false
+		);
+
+		wp_register_style(
+			'tournament_brackets_admin_style',
+			TOURNAMENT_BRACKETS_URL . 'assets/css/tournament-brackets-admin.css',
+			array(),
+			TOURNAMENT_BRACKETS_URL
+		);
+
+		wp_register_style(
+			'tournament_brackets_style',
+			TOURNAMENT_BRACKETS_URL . 'assets/css/tournament-brackets.css',
+			array(),
+			TOURNAMENT_BRACKETS_URL
 		);
 	}
 
 	public function admin_enqueue_assets() {
 		$current_screen = get_current_screen();
 		if ( 'tournament-bracket' === $current_screen->id ) {
-			wp_enqueue_script( 'tournament_brackets_jquery_bracket' );
+			wp_enqueue_script( 'tournament_brackets_jquery_tennis_bracket' );
 
 			wp_enqueue_style( 'tournament_brackets_jquery_bracket_style' );
 
+			wp_enqueue_script( 'tournament_brackets_jquery_doublescroll' );
+
 			wp_enqueue_script( 'tournament_brackets_admin_script' );
+
+			wp_enqueue_style( 'tournament_brackets_admin_style' );
 		}
 	}
 
 	public function enqueue_assets() {
-		wp_enqueue_script( 'tournament_brackets_jquery_bracket' );
+		wp_enqueue_script( 'tournament_brackets_jquery_tennis_bracket' );
 
 		wp_enqueue_style( 'tournament_brackets_jquery_bracket_style' );
+
+		wp_enqueue_style( 'tournament_brackets_style' );
+
+		wp_enqueue_script( 'tournament_brackets_jquery_doublescroll' );
 	}
 
 	public function tournament_brackets_shortcode_callback( $atts ) {
-		$tournament_brackets_id = $atts['id'];
-		$tournament_brackets_data = get_post_meta( $tournament_brackets_id, 'tournament_brackets_data', true );
-		require( TOURNAMENT_BRACKETS_VIEWS_PATH . '/tournament-brackets-front.phtml' );
+		if ( ! is_admin() ) {
+			$tournament_brackets_id   = $atts['id'];
+			$tournament_brackets_data = get_post_meta( $tournament_brackets_id, 'tournament_brackets_data', true );
+			require( TOURNAMENT_BRACKETS_VIEWS_PATH . '/tournament-brackets-front.phtml' );
+		}
 	}
 }
 

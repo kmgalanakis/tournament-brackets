@@ -71,6 +71,9 @@
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__css_tournament_brackets_scss__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__css_tournament_brackets_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__css_tournament_brackets_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__css_tournament_brackets_admin_scss__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__css_tournament_brackets_admin_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__css_tournament_brackets_admin_scss__);
+
 
 
 var tournamentBracketsAdmin = function ($) {
@@ -88,12 +91,15 @@ var tournamentBracketsAdmin = function ($) {
         if (0 >= tournamentBracketsData.length) {
             tournamentBracketsData = {
                 'teams': [[null, null], [null, null]],
-                'results': [[[[null, null], [null, null]], [[null, null], [null, null]]]]
+                'results': [[[[[null, null, null], [null, null, null]], [[null, null, null], [null, null, null]]], [[[null, null, null], [null, null, null]], [[null, null, null], [null, null, null]]]]]
             };
         }
 
         $('#tournament-brackets').bracket({
             init: tournamentBracketsData,
+            centerConnectors: true,
+            teamWidth: 180,
+            skipConsolationRound: true,
             save: self.saveFn
         });
     };
@@ -117,10 +123,17 @@ var tournamentBracketsAdmin = function ($) {
 
 jQuery(document).ready(function ($) {
     var tournamentBracketsAdminInstance = new tournamentBracketsAdmin($);
+    $('#tournament-brackets').doubleScroll();
 });
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
